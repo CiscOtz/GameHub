@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button class="toggle-btn" onclick="logined()">Iniciar sesión</button>
+                <button class="toggle-btn" onclick="registered()">Registrarse</button>
+            </div>
+            <div class="social-icons">
+                <img src="./3225194_app_facebook_logo_media_popular_icon.png" alt="fb">
+                <img src="./2993685_brand_brands_google_logo_logos_icon.png" alt="tw">
+                <img src="./11244080_x_twitter_elon musk_twitter new logo_icon.png" alt="gp">
+            </div>
+            <form id="login" class="input-group">
+                <input type="text" class="input-field" placeholder="Ingresar nombre" required>
+                <input type="password" class="input-field" placeholder="Ingresar contraseña" required>
+                <input type="checkbox" class="check-box"><span>Recordar contraseña</span>
+                <button type="submit" class="submit-btn">Iniciar sesión</button>
+            </form>
+            <form id="register" class="input-group">
+                <input type="text" class="input-field" placeholder="Ingresar nombre" required>
+                <input type="email" class="input-field" placeholder="Ingresar correo" required>
+                <input type="password" class="input-field" placeholder="Ingresar contraseña" required>
+                <input type="checkbox" class="check-box"><span>Estoy de acuerdo con los términos y condiciones</span>
+                <button type="submit" class="submit-btn">Registrarme</button>
+            </form>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
