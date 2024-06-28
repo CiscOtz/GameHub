@@ -15,11 +15,7 @@ const Login = () => {
                     <button className="toggle-btn" onClick={() => setIsLoginView(true)}>Iniciar sesión</button>
                     <button className="toggle-btn" onClick={() => setIsLoginView(false)}>Registrarse</button>
                 </div>
-                <div className="social-icons">
-                <img src={facebookIcon} alt="Facebook" />
-                <img src={googleIcon} alt="Google" />
-                <img src={twitterIcon} alt="Twitter" />
-                </div>
+                
                 <form id="login" className={`input-group ${isLoginView ? "visible" : "hidden"}`}>
                     <input type="text" className="input-field" placeholder="Ingresar nombre" required />
                     <input type="password" className="input-field" placeholder="Ingresar contraseña" required />
