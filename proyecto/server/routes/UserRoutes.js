@@ -1,7 +1,8 @@
-import express, { response } from "express";
+import express, { request, response } from "express";
 import UserModel from "../models/user.js";
 import bcrypt from "bcryptjs";
 import {createAcessToken} from "../libs/jwt.js";
+import {authRequired} from "../libs/validateToken.js";
 
 const router = express.Router();
 
@@ -57,9 +58,33 @@ router.post("/users/login", async (request, response) => {
     }
 });
 
+// Logout
+router.post("/users/logout", (request, response) => {
+    try{
+        response.cookie('token', "", {
+            expires: new Date(0),
+        });
+        return response.sendStatus(200);
+    }catch (error) {
+        response.status(500).send(error);
+    }
+});
+
+// Ver perfil
+router.get("/users/profile", authRequired, async (request, response) => {
+    try {
+        const userFound = await UserModel.findOne({_id: request.user.id });
+
+        if(!userFound) return response.status(400).json({message: "User not found"});
+    
+        response.send(userFound);
+    } catch (error){
+        response.status(500).send(error);
+    }
+});
 
 
-// Muestra un determinado usuario
+/* Muestra un determinado usuario
 router.get("/users/:id", async (request, response) => {
     try {
         const user = await UserModel.findOne({ _id: request.params.id });
@@ -73,6 +98,7 @@ router.get("/users/:id", async (request, response) => {
         response.status(500).send({ error });
     }
 });
+*/
 
 // Actualizar usuario
 router.put("/users/:id", async (request, response) => {
@@ -105,14 +131,5 @@ router.delete("/users/:id", async (request, response) => {
         response.status(500).send({ error });
     }
 });
-
-// Iniciar sesión de usuario
-router.post("/login", async (request, response) => {
-    try {
-        response.send("login");
-    } catch (error) {
-        response.status(500).send( { error });
-    }
-})
 
 export default router;
