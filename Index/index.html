@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub - Tienda de juegos</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header class="header-container">
+        <div class="header-content container">
+            <h1>GameHub</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Tienda</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar juegos...">
+                <button type="submit">Buscar</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="featured-games">
+            <h2>Nuevos lanzamientos</h2>
+            <div class="games">
+                <article class="game">
+                    <img src="default-ultimate.jpeg" alt="Mortal Kombat 11 Ultimate">
+                    <h3>Mortal Kombat 11 Ultimate</h3>
+                    <p>$149.99</p>
+                    <a href="#" class="btn">Comprar</a>
+                </article>
+                <article class="game">
+                    <img src="Need_for_Speed_Unbound.png" alt="Need for Speed Unbound">
+                    <h3>Need for Speed Unbound</h3>
+                    <p>$170.00</p>
+                    <a href="#" class="btn">Comprar</a>
+                </article>
+                <article class="game">
+                    <img src="descargar.jpeg" alt="GRIS">
+                    <h3>GRIS</h3>
+                    <p>$125.00</p>
+                    <a href="#" class="btn">Comprar</a>
+                </article>
+                <article class="game">
+                    <img src="Hollow_Knight_first_cover_art.png" alt="Hollow Knight">
+                    <h3>Hollow Knight</h3>
+                    <p>$3.39</p>
+                    <a href="#" class="btn">Comprar</a>
+                </article>
+            </div>
+        </section>
+
+        <div class="wrapper">
+            <div class="carousel-container">
+                <input type="radio" name="slide" id="c1" checked>
+                <label for="c1" class="card">
+                    <div class="row">
+                        <div class="icon">1</div>
+                        <div class="description">
+                            <h4>MK11</h4>
+                            <p>Videojuego de lucha desarrollado por NetherRealm Studios y publicado por Warner Bros.</p>
+                        </div>
+                    </div>
+                </label>
+                <input type="radio" name="slide" id="c2">
+                <label for="c2" class="card">
+                    <div class="row">
+                        <div class="icon">2</div>
+                        <div class="description">
+                            <h4>Asphalt 9</h4>
+                            <p>Videojuego de carreras online con los mejores gráficos del mercado</p>
+                        </div>
+                    </div>
+                </label>
+                <input type="radio" name="slide" id="c3">
+                <label for="c3" class="card">
+                    <div class="row">
+                        <div class="icon">3</div>
+                        <div class="description">
+                            <h4>Brawlhalla</h4>
+                            <p>Videojuego de lucha de hasta 8 jugadores que pueden enfrentarse en línea o localmente.</p>
+                        </div>
+                    </div>
+                </label>
+                <input type="radio" name="slide" id="c4">
+                <label for="c4" class="card">
+                    <div class="row">
+                        <div class="icon">4</div>
+                        <div class="description">
+                            <h4>Halo</h4>
+                            <p>Videojuego de disparos en primera persona desarrollado por Bungie Studios</p>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <section class="categories">
+            <h2>Categorías</h2>
+            <ul>
+                <li><a href="#">Acción</a></li>
+                <li><a href="#">Aventura</a></li>
+                <li><a href="#">Rol</a></li>
+                <li><a href="#">Indie</a></li>
+                <li><a href="#">Multijugador</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 GameHub</p>
+    </footer>
+</body>
+</html>
