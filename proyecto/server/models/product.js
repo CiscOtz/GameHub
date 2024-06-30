@@ -9,7 +9,8 @@ const ProductSchema = new mongoose.Schema({
     category: { type: Array },
     description: { type: String },
     releaseDate: {  type: Date  },
-    requirements: { type: String  }
+    requirements: { type: String  },
+    imageUrl: { type: String, required: true }
 });
 
 const ProductModel = mongoose.model("Producto", ProductSchema);

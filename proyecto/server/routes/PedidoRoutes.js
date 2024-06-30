@@ -1,5 +1,7 @@
 import express from "express";
 import PedidoModel from "../models/pedido.js";
+import { authRequired } from "../libs/validateToken.js";
+
 const router = express.Router();
 
 // Mostrar todos los pedidos
@@ -13,11 +15,26 @@ router.get("/pedidos", async (request, response) => {
 });
 
 // Crear un nuevo pedido
-router.post("/pedidos", async (request, response) => {
+router.post("/pedidos",authRequired, async (request, response) => {
     const pedido = new PedidoModel(request.body);
 
     try {
         await pedido.save();
+
+        const usuario = await UserModel.findById(request.user._id);
+
+        if (!usuario) {
+            return response.status(404).send({ error: "Usuario no encontrado" });
+        }
+
+        // Agregar la ID del pedido al campo de pedidos del usuario
+        usuario.pedidos.push(pedido._id);
+
+        // Guardar los cambios en el usuario
+        await usuario.save();
+
+        response.send(pedido);
+
         response.send(pedido);
     } catch (error) {
         response.status(500).send(error);

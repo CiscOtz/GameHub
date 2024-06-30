@@ -1,0 +1,35 @@
+/* GameDetails.css */
+.game-details {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background: #1e1e1e; /* Dark gray for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: #ffffff; /* White text */
+    text-align: center;
+  }
+  
+  .game-details h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .game-details .game-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Limit the height */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .game-details p {
+    margin: 10px 0;
+    color: #cccccc; /* Light gray text */
+  }
+  
+  .game-details p strong {
+    color: #ffffff; /* White text for strong elements */
+  }
+  

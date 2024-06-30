@@ -41,17 +41,19 @@ router.post("/users/login", async (request, response) => {
     const {email, password} = request.body;
 
     try { 
-        const userFound = await UserModel.findOne({email}); 
-        if(!userFound) response.status(400).json({message:"Usuario no encontrado"});
-
-        const isMatch = await bcrypt.compare(password, userFound.password);
-        if(!isMatch) return response.status(400).json({message: "Invalid password"});
-        
-        const token = await createAcessToken({id:userFound._id});
-        
-        response.cookie('token', token);
-        response.send(userFound);
-
+        const userFound = await UserModel.findOne({email});
+        if(!userFound){
+            response.status(400).json({message:"User not found"});
+        }else{
+            const isMatch = await bcrypt.compare(password, userFound.password);
+            if(!isMatch){
+                return response.status(400).json({message: "Invalid password"});
+            } else {
+                const token = await createAcessToken({id:userFound._id});
+                response.cookie('token', token);
+                response.send(userFound);
+            }        
+        }
 
     } catch (error) {
         response.status(500).send(error);
@@ -84,24 +86,7 @@ router.get("/users/profile", authRequired, async (request, response) => {
 });
 
 
-/* Muestra un determinado usuario
-router.get("/users/:id", async (request, response) => {
-    try {
-        const user = await UserModel.findOne({ _id: request.params.id });
-        if (!user) {
-            return response.status(404).send({ error: "Usuario no encontrado" });
-        }
-
-        response.send(user);
-
-    } catch (error) {
-        response.status(500).send({ error });
-    }
-});
-*/
-
-// Actualizar usuario
-router.put("/users/:id", async (request, response) => {
+router.put("/users/:id", authRequired, async (request, response) => {
     const { id } = request.params;
     const update = request.body;
 
@@ -119,10 +104,10 @@ router.put("/users/:id", async (request, response) => {
 });
 
 // Eliminar usuario
-router.delete("/users/:id", async (request, response) => {
+router.delete("/users/:id", authRequired, async (request, response) => {
     try {
         const deletedUser = await UserModel.deleteOne({ _id: request.params.id });
-        if (deletedUser) {
+        if (deletedUser.deletedCount === 1) {
             response.send({ message: "Usuario eliminado exitosamente" });
         } else {
             response.status(404).send({ message: "Usuario no encontrado" });
