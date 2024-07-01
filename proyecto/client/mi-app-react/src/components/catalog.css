@@ -1,71 +1,92 @@
-/* GameCatalog.css */
-body {
-  background-color: #000000; /* Black background */
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .game-catalog {
-  max-width: 1200px;
-  margin: 20px auto;
+  text-align: center;
+  background-color: black;
+  color: white;
   padding: 20px;
-  border-radius: 8px;
-  background: #1e1e1e; /* Dark gray for the container */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-.game-catalog h1 {
-  color: #ffffff; /* White text */
-  text-align: center;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
   margin-bottom: 20px;
-  font-size: 2em;
-  text-transform: uppercase;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-button {
+  background-color: purple;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.auth-button:hover {
+  background-color: darkviolet;
+}
+
+.search-bar input {
+  background-color: black;
+  color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.search-bar input::placeholder {
+  color: #ccc;
 }
 
 .game-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .game-item {
-  flex: 0 1 30%;
-  box-sizing: border-box;
-  border: 1px solid #444; /* Darker border */
-  margin: 10px 0;
+  background-color: #222;
   padding: 20px;
-  border-radius: 8px;
-  background: #333333; /* Darker gray for items */
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.game-item:hover {
-  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2); /* White shadow */
-  transform: translateY(-4px);
-}
-
-.game-item h2 {
-  margin: 10px 0;
-  color: #ffffff; /* White text */
-  font-size: 1.5em;
-}
-
-.game-item p {
-  margin: 5px 0;
-  color: #cccccc; /* Light gray text */
-}
-
-.game-item p strong {
-  color: #ffffff; /* White text for strong elements */
-  font-weight: 600;
+  margin: 10px;
+  border-radius: 10px;
+  width: 30%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .game-image {
-  width: 100%;
-  height: 200px; /* Fixed height */
-  object-fit: cover; /* Ensures the image covers the area */
-  border-radius: 8px;
-  margin-bottom: 10px;
+  width: 400px                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ;
+  height: 200px; /* Set a fixed height for all images */
+  object-fit: cover; /* Ensure the image covers the specified dimensions without distortion */
+  border-radius: 5px;
+}
+
+.game-item h2 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.game-item p {
+  font-size: 16px;
+}
+
+.game-item a {
+  color: #1e90ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.game-item a:hover {
+  text-decoration: underline;
 }

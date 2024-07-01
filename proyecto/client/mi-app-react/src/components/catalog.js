@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import SearchBar from './searchBar.js';
 import './catalog.css';
 
-const GameCatalog = () => {
+const GameCatalog = ({ searchTerm }) => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/products')
@@ -37,8 +35,6 @@ const GameCatalog = () => {
 
   return (
     <div className="game-catalog">
-      <h1>Video Game Catalog</h1>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="game-grid">
         {filteredGames.map(game => (
           <div className="game-item" key={game._id}>
@@ -46,7 +42,7 @@ const GameCatalog = () => {
               <img src={game.imageUrl} alt={game.name} className="game-image" />
               <h2>{game.name}</h2>
             </Link>
-            <p><strong>Genre:</strong> {game.genre}</p>
+            <p><strong>Género:</strong> {game.category}</p>
             <p>{game.description}</p>
           </div>
         ))}

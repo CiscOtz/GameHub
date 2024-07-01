@@ -1,0 +1,30 @@
+.profile-container {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 50px auto;
+  }
+  
+  .profile-details p {
+    margin: 10px 0;
+  }
+  
+  .error {
+    color: red;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -17,6 +17,7 @@ router.get("/users", async (request, response) => {
 });
 
 // Crea un nuevo usuario
+/*
 router.post("/users/register", async (request, response) => {    
     try { 
         const user = new UserModel(request.body);
@@ -57,6 +58,63 @@ router.post("/users/login", async (request, response) => {
 
     } catch (error) {
         response.status(500).send(error);
+    }
+});
+*/
+
+router.post("/users/register", async (req, res) => {    
+    try { 
+        const { name, age, email, phoneNumber, password, payMethods } = req.body;
+        
+        // Check if user already exists
+        const userExists = await UserModel.findOne({ email });
+        if (userExists) {
+            return res.status(400).json({ message: "User already exists" });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newUser = new UserModel({
+            name,
+            age,
+            email,
+            phoneNumber,
+            password: hashedPassword,
+            payMethods
+        });
+
+        await newUser.save();
+
+        const token = await createAcessToken({ id: newUser._id });
+        res.cookie('token', token, { httpOnly: true });
+
+        res.status(201).json({ message: 'User registered successfully', user: newUser });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Login
+router.post("/users/login", async (req, res) => {    
+    const { email, password } = req.body;
+
+    try { 
+        const userFound = await UserModel.findOne({ email });
+        if (!userFound) {
+            return res.status(400).json({ message: "User not found" });
+        }
+
+        const isMatch = await bcrypt.compare(password, userFound.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: "Invalid password" });
+        }
+
+        const token = await createAcessToken({ id: userFound._id });
+        res.cookie('token', token, { httpOnly: true });
+
+        res.status(200).json({ message: 'Login successful', user: userFound });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 });
 

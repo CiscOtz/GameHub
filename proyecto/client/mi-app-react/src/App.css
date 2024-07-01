@@ -10,7 +10,7 @@
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   height: 100vh; /* Uso de Viewport Height para que ocupe toda la altura disponible */
-  background-image: url('./Fondo_1.jpeg'); /* Asegúrate de cambiar la ruta a tu imagen de fondo */
+  /*background-image: url('./Fondo_1.jpeg'); /* Asegúrate de cambiar la ruta a tu imagen de fondo */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -19,7 +19,7 @@
 
 .form-box {
   width: 400px;
-  background: rgba(255, 255, 255, 0.8); /* Ajusta la opacidad como necesites */
+  background: rgba(0, 0, 0, 0.8); /* Ajusta la opacidad como necesites */
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
